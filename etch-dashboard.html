@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冶染社｜營運儀表板</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; background: #f5f4f2; min-height: 100vh; }
+.topbar { background: #949b96; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; }
+.topbar-left { display: flex; align-items: center; gap: 20px; }
+.logo-placeholder { width: 32px; height: 32px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.5); }
+.divider-v { width: 1px; height: 16px; background: rgba(255,255,255,0.3); }
+.page-title { color: #fff; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; }
+.topbar-right { color: rgba(255,255,255,0.6); font-size: 11px; letter-spacing: 0.06em; }
+.main { padding: 28px; display: flex; flex-direction: column; gap: 20px; }
+.section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #949b96; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #949b96; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #c8cbc9; border: 1px solid #c8cbc9; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #c8cbc9; border: 1px solid #c8cbc9; }
+.metric { background: #fff; padding: 18px 20px; }
+.metric-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #949b96; margin-bottom: 10px; }
+.metric-value { font-size: 26px; font-weight: 300; color: #000; line-height: 1; margin-bottom: 4px; }
+.metric-value.accent { color: #949b96; }
+.metric-sub { font-size: 11px; color: #949b96; margin-top: 6px; }
+.metric-sub.up { color: #3B6D11; }
+.metric-sub.down { color: #A32D2D; }
+.metric-sub.warn { color: #854F0B; }
+.panel { background: #fff; border: 1px solid #c8cbc9; }
+.panel-head { padding: 14px 20px; border-bottom: 1px solid #e8e7e4; display: flex; align-items: center; justify-content: space-between; }
+.panel-head-title { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #000; }
+.panel-head-meta { font-size: 10px; color: #949b96; letter-spacing: 0.06em; }
+.panel-body { padding: 16px 20px; }
+.project-row { display: grid; grid-template-columns: 1fr 90px 80px 80px; align-items: center; padding: 10px 0; border-bottom: 0.5px solid #e8e7e4; gap: 8px; }
+.project-row:last-child { border-bottom: none; }
+.project-name { font-size: 12px; color: #000; font-weight: 500; }
+.project-client { font-size: 11px; color: #949b96; margin-top: 2px; }
+.tag { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border: 0.5px solid; }
+.tag-exec { border-color: #949b96; color: #5F5E5A; background: #f5f4f2; }
+.tag-review { border-color: #BA7517; color: #854F0B; background: #FAEEDA; }
+.tag-final { border-color: #3B6D11; color: #3B6D11; background: #EAF3DE; }
+.tag-propose { border-color: #185FA5; color: #185FA5; background: #E6F1FB; }
+.tag-warn { border-color: #A32D2D; color: #A32D2D; background: #FCEBEB; }
+.col-right { text-align: right; font-size: 11px; color: #444; }
+.col-right.muted { color: #949b96; }
+.col-right.warn { color: #854F0B; }
+.todo-row { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 0.5px solid #e8e7e4; }
+.todo-row:last-child { border-bottom: none; }
+.todo-dot { width: 6px; height: 6px; border-radius: 50%; background: #949b96; margin-top: 4px; flex-shrink: 0; }
+.todo-dot.black { background: #000; }
+.todo-dot.warn { background: #BA7517; }
+.todo-text { font-size: 12px; color: #000; line-height: 1.5; }
+.row-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.pipeline-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 0.5px solid #e8e7e4; }
+.pipeline-row:last-child { border-bottom: none; }
+.pipeline-name { font-size: 12px; color: #000; }
+.pipeline-meta { font-size: 11px; color: #949b96; margin-top: 2px; }
+.pipeline-amt { font-size: 12px; color: #000; font-weight: 500; text-align: right; }
+.pipeline-stage { font-size: 10px; color: #949b96; text-align: right; margin-top: 2px; }
+.cashflow-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 0.5px solid #e8e7e4; }
+.cashflow-row:last-child { border-bottom: none; }
+.cf-label { font-size: 12px; color: #444; }
+.cf-date { font-size: 10px; color: #949b96; margin-top: 2px; }
+.cf-amt { font-size: 12px; font-weight: 500; }
+.cf-amt.pos { color: #3B6D11; }
+.cf-amt.neg { color: #A32D2D; }
+.ad-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 0.5px solid #e8e7e4; }
+.ad-row:last-child { border-bottom: none; }
+.ad-label { font-size: 11px; color: #444; }
+.ad-val { font-size: 12px; font-weight: 500; color: #000; }
+.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.bar-label { font-size: 11px; color: #444; width: 60px; flex-shrink: 0; }
+.bar-track { flex: 1; height: 4px; background: #e8e7e4; }
+.bar-fill { height: 4px; background: #000; }
+.bar-val { font-size: 11px; color: #000; width: 48px; text-align: right; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo-placeholder">LOGO</div>
+    <div class="divider-v"></div>
+    <span class="page-title">營運儀表板</span>
+  </div>
+  <span id="today-date"></span>
+</div>
+<div class="main">
+  <div>
+    <div class="section-label">今日任務 Daily Tasks</div>
+    <div class="row-2col">
+      <div class="panel">
+        <div class="panel-head"><span class="panel-head-title">小可</span><span class="panel-head-meta" id="d1"></span></div>
+        <div class="panel-body">
+          <div class="todo-row"><div class="todo-dot black"></div><div class="todo-text">確認外交部年報第三輪修改</div></div>
+          <div class="todo-row"><div class="todo-dot"></div><div class="todo-text">回覆工研院提案會議時間</div></div>
+          <div class="todo-row"><div class="todo-dot warn"></div><div class="todo-text">追蹤教育部青年署尾款</div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><span class="panel-head-title">香菇</span><span class="panel-head-meta" id="d2"></span></div>
+        <div class="panel-body">
+          <div class="todo-row"><div class="todo-dot black"></div><div class="todo-text">完成台鐵品牌識別初稿</div></div>
+          <div class="todo-row"><div class="todo-dot"></div><div class="todo-text">整理兩廳院收尾文件</div></div>
+          <div class="todo-row"><div class="todo-dot"></div><div class="todo-text">確認包裝設計印刷規格</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">累積待辦 Backlog</div>
+    <div class="grid-3">
+      <div class="metric"><div class="metric-label">待分配任務</div><div class="metric-value">12</div><div class="metric-sub warn">本週新增 4 件</div></div>
+      <div class="metric"><div class="metric-label">逾期未處理</div><div class="metric-value" style="color:#A32D2D;">3</div><div class="metric-sub down">需本週清除</div></div>
+      <div class="metric"><div class="metric-label">下週重要 Deadline</div><div class="metric-value accent">2</div><div class="metric-sub">兩廳院 / 包裝設計</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">專案狀態 Project Status</div>
+    <div class="panel">
+      <div class="panel-head"><span class="panel-head-title">進行中專案</span><span class="panel-head-meta">共 6 件</span></div>
+      <div class="panel-body">
+        <div class="project-row" style="border-bottom:0.5px solid #c8cbc9; padding-bottom:6px; margin-bottom:4px;">
+          <div style="font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#949b96;">專案名稱</div>
+          <div style="font-size:10px;color:#949b96;text-transform:uppercase;letter-spacing:0.08em;">狀態</div>
+          <div style="font-size:10px;color:#949b96;text-transform:uppercase;letter-spacing:0.08em;text-align:right;">款項</div>
+          <div style="font-size:10px;color:#949b96;text-transform:uppercase;letter-spacing:0.08em;text-align:right;">截止</div>
+        </div>
+        <div class="project-row"><div><div class="project-name">外交部年報設計</div><div class="project-client">外交部</div></div><div><span class="tag tag-review">審稿中</span></div><div class="col-right">頭款 ✓</div><div class="col-right muted">05 / 20</div></div>
+        <div class="project-row"><div><div class="project-name">品牌識別系統</div><div class="project-client">台灣鐵路</div></div><div><span class="tag tag-exec">執行中</span></div><div class="col-right">頭款 ✓</div><div class="col-right muted">06 / 10</div></div>
+        <div class="project-row"><div><div class="project-name">展覽主視覺</div><div class="project-client">國家兩廳院</div></div><div><span class="tag tag-final">收尾</span></div><div class="col-right warn">尾款待收</div><div class="col-right warn">05 / 08 !</div></div>
+        <div class="project-row"><div><div class="project-name">網站設計</div><div class="project-client">工研院</div></div><div><span class="tag tag-propose">提案中</span></div><div class="col-right muted">頭款待簽</div><div class="col-right muted">05 / 30</div></div>
+        <div class="project-row"><div><div class="project-name">包裝設計</div><div class="project-client">某食品品牌</div></div><div><span class="tag tag-exec">執行中</span></div><div class="col-right">頭款 ✓</div><div class="col-right warn">05 / 05 !</div></div>
+        <div class="project-row"><div><div class="project-name">手冊設計</div><div class="project-client">教育部青年署</div></div><div><span class="tag tag-warn">逾期</span></div><div class="col-right">頭款 ✓</div><div class="col-right warn">04 / 28 !</div></div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">財務健康 Financial Health</div>
+    <div class="grid-4" style="margin-bottom:20px;">
+      <div class="metric"><div class="metric-label">本月收入</div><div class="metric-value">$280,000</div><div class="metric-sub up">▲ 預算達成 93%</div></div>
+      <div class="metric"><div class="metric-label">本月支出</div><div class="metric-value">$94,500</div><div class="metric-sub">預算 $110,000</div></div>
+      <div class="metric"><div class="metric-label">公司現金水位</div><div class="metric-value accent">$1,240,000</div><div class="metric-sub">含公司保留款</div></div>
+      <div class="metric"><div class="metric-label">應收帳款（未收）</div><div class="metric-value">$185,500</div><div class="metric-sub warn">▲ 3 筆逾期提醒</div></div>
+    </div>
+    <div class="row-2col">
+      <div class="panel">
+        <div class="panel-head"><span class="panel-head-title">下月現金流預測</span><span class="panel-head-meta">6 月</span></div>
+        <div class="panel-body">
+          <div class="cashflow-row"><div><div class="cf-label">文化部 — 尾款</div><div class="cf-date">預計 06 / 10</div></div><div class="cf-amt pos">+ $120,000</div></div>
+          <div class="cashflow-row"><div><div class="cf-label">兩廳院 — 頭款</div><div class="cf-date">預計 06 / 15</div></div><div class="cf-amt pos">+ $80,000</div></div>
+          <div class="cashflow-row"><div><div class="cf-label">辦公室租金</div><div class="cf-date">06 / 05</div></div><div class="cf-amt neg">− $28,000</div></div>
+          <div class="cashflow-row"><div><div class="cf-label">薪資（含勞健保）</div><div class="cf-date">06 / 30</div></div><div class="cf-amt neg">− $66,000</div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><span class="panel-head-title">業務漏斗 Pipeline</span><span class="panel-head-meta">詢問中 / 報價中</span></div>
+        <div class="panel-body">
+          <div class="pipeline-row"><div><div class="pipeline-name">國立中央大學</div><div class="pipeline-meta">品牌識別系統</div></div><div><div class="pipeline-amt">$180,000</div><div class="pipeline-stage">報價已送出</div></div></div>
+          <div class="pipeline-row"><div><div class="pipeline-name">某食品品牌</div><div class="pipeline-meta">包裝設計</div></div><div><div class="pipeline-amt">$95,000</div><div class="pipeline-stage">初步詢問</div></div></div>
+          <div class="pipeline-row"><div><div class="pipeline-name">政府機關 A</div><div class="pipeline-meta">活動主視覺</div></div><div><div class="pipeline-amt">$60,000</div><div class="pipeline-stage">需求確認中</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">廣告效益 Ad Performance</div>
+    <div class="row-2col">
+      <div class="panel">
+        <div class="panel-head"><span class="panel-head-title">本週數據</span><span class="panel-head-meta">Google Ads</span></div>
+        <div class="panel-body">
+          <div class="ad-row"><span class="ad-label">本週花費</span><span class="ad-val">$4,200</span></div>
+          <div class="ad-row"><span class="ad-label">點擊數</span><span class="ad-val">318</span></div>
+          <div class="ad-row"><span class="ad-label">詢問來源（廣告）</span><span class="ad-val">3 件</span></div>
+          <div class="ad-row"><span class="ad-label">帶來潛在案件金額</span><span class="ad-val">$335,000</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><span class="panel-head-title">累計 ROI</span><span class="panel-head-meta">2026 年至今</span></div>
+        <div class="panel-body">
+          <div style="font-size:42px;font-weight:300;color:#3B6D11;margin-bottom:4px;">7.9x</div>
+          <div style="font-size:11px;color:#949b96;margin-bottom:20px;">每投入 $1 帶來 $7.9 潛在案件金額</div>
+          <div class="bar-row"><span class="bar-label">詢問轉案</span><div class="bar-track"><div class="bar-fill" style="width:68%;"></div></div><span class="bar-val">68%</span></div>
+          <div class="bar-row"><span class="bar-label">廣告佔詢問</span><div class="bar-track"><div class="bar-fill" style="width:42%;"></div></div><span class="bar-val">42%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+const now = new Date();
+const days = ['週日','週一','週二','週三','週四','週五','週六'];
+const m = String(now.getMonth()+1).padStart(2,'0');
+const d = String(now.getDate()).padStart(2,'0');
+document.getElementById('today-date').textContent = now.getFullYear()+' / '+m+' / '+d+'\u3000'+days[now.getDay()];
+const md = m+' / '+d;
+document.getElementById('d1').textContent = md;
+document.getElementById('d2').textContent = md;
+</script>
+</body>
+</html>
