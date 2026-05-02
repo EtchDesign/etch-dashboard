@@ -12,9 +12,9 @@ body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; backgrou
 .logo-placeholder { width: 32px; height: 32px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.5); }
 .divider-v { width: 1px; height: 16px; background: rgba(255,255,255,0.3); }
 .page-title { color: #fff; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; }
-.topbar-right { color: rgba(255,255,255,0.6); font-size: 11px; letter-spacing: 0.06em; }
+.topbar-right { color: #fff; font-size: 11px; letter-spacing: 0.06em; }
 .main { padding: 28px; display: flex; flex-direction: column; gap: 20px; }
-.section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #949b96; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #949b96; }
+.section-label { font-size: 15px; font-weight: 500; letter-spacing: 0.04em; color: #949b96; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #949b96; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #c8cbc9; border: 1px solid #c8cbc9; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #c8cbc9; border: 1px solid #c8cbc9; }
 .metric { background: #fff; padding: 18px 20px; }
@@ -46,7 +46,7 @@ body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; backgrou
 .todo-row { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 0.5px solid #e8e7e4; }
 .todo-row:last-child { border-bottom: none; }
 .todo-dot { width: 6px; height: 6px; border-radius: 50%; background: #949b96; margin-top: 4px; flex-shrink: 0; }
-.todo-dot.black { background: #000; }
+.todo-dot.black { background: #949b96; }
 .todo-dot.warn { background: #BA7517; }
 .todo-text { font-size: 12px; color: #000; line-height: 1.5; }
 .row-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -77,11 +77,22 @@ body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; backgrou
 <body>
 <div class="topbar">
   <div class="topbar-left">
-    <div class="logo-placeholder">LOGO</div>
+    <div style="height:48px;display:flex;align-items:center;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="140" height="48" style="display:block;" viewBox="0 0 350 120">
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 47.195312 73.933594 L 39.492188 73.933594 L 39.492188 57.5625 L 46.351562 57.5625 C 49.179688 57.5625 51.527344 57.863281 52.96875 58.707031 C 54.65625 59.730469 55.078125 60.269531 55.136719 60.332031 C 55.136719 60.210938 54.957031 58.527344 54.957031 55.9375 C 54.957031 53.289062 55.136719 51.542969 55.136719 51.484375 C 55.015625 51.605469 54.535156 52.148438 52.96875 53.050781 C 51.527344 53.890625 49.179688 54.191406 46.351562 54.191406 L 39.492188 54.191406 L 39.492188 37.945312 L 47.796875 37.945312 C 50.625 37.945312 52.96875 38.425781 54.414062 39.269531 C 56.101562 40.289062 56.523438 40.832031 56.582031 40.894531 C 56.582031 40.773438 56.402344 39.6875 56.402344 37.402344 C 56.402344 35.417969 56.460938 34.515625 56.460938 34.515625 L 36.84375 34.515625 C 33.59375 34.515625 32.269531 34.453125 32.269531 34.453125 L 32.8125 35.476562 C 34.074219 37.882812 34.316406 38.125 34.316406 55.636719 C 34.316406 73.691406 34.015625 74.113281 32.8125 76.398438 L 32.269531 77.421875 C 32.269531 77.421875 33.652344 77.363281 36.902344 77.363281 L 57.0625 77.363281 L 57.183594 75.675781 C 57.542969 71.042969 57.84375 68.9375 57.84375 68.9375 C 55.617188 72.1875 54.65625 73.933594 47.195312 73.933594 "/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 73.375 72.609375 C 72.832031 71.464844 72.59375 70.5 72.59375 67.792969 L 72.59375 46.730469 L 76.683594 46.730469 C 81.679688 46.730469 82.582031 47.332031 82.582031 47.332031 C 82.582031 47.332031 82.523438 46.609375 82.523438 45.164062 C 82.523438 43.722656 82.582031 42.9375 82.582031 42.9375 C 82.582031 42.9375 81.621094 43.601562 76.683594 43.601562 L 72.59375 43.601562 L 72.59375 36.019531 L 70.726562 36.019531 C 70.726562 36.019531 69.886719 38.605469 67.839844 41.917969 C 65.972656 44.984375 63.988281 46.667969 63.867188 46.730469 L 67.71875 46.730469 C 67.71875 46.730469 67.539062 51.484375 67.539062 67.371094 C 67.539062 71.824219 67.898438 73.511719 68.800781 74.953125 C 69.824219 76.640625 71.691406 77.964844 75.121094 77.964844 C 82.703125 77.964844 82.703125 72.96875 82.703125 72.96875 C 82.703125 72.96875 81.019531 74.773438 77.648438 74.773438 C 75.300781 74.773438 74.035156 73.933594 73.375 72.609375 "/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 102.445312 74.171875 C 95.101562 74.171875 92.214844 68.035156 92.214844 60.632812 C 92.214844 48.476562 97.328125 45.949219 102.203125 45.949219 C 106.355469 45.949219 108.464844 47.453125 111.59375 52.507812 C 111.59375 52.507812 111.472656 50.28125 111.472656 48.234375 C 111.472656 46.128906 111.59375 45.105469 111.59375 45.105469 C 111.59375 45.105469 108.882812 42.757812 102.445312 42.757812 C 87.640625 42.757812 86.859375 56.597656 86.859375 61.113281 C 86.859375 72.066406 92.816406 78.023438 101.300781 78.023438 C 108.945312 78.023438 112.132812 73.8125 112.132812 69.898438 C 112.132812 69.898438 109.484375 74.171875 102.445312 74.171875 "/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 145.65625 61.054688 L 145.65625 59.609375 C 145.65625 52.566406 145.355469 49.679688 144.03125 47.152344 C 142.527344 44.324219 139.460938 42.699219 134.945312 42.699219 C 131.636719 42.699219 126.582031 43.722656 125.136719 50.222656 C 125.136719 50.222656 125.257812 48.234375 125.257812 45.886719 L 125.257812 40.351562 C 125.257812 36.140625 125.4375 30 125.4375 30 L 118.335938 31.503906 L 118.878906 32.527344 C 119.839844 34.273438 120.382812 35.957031 120.382812 46.367188 L 120.382812 61.054688 C 120.382812 74.171875 119.839844 74.652344 118.878906 76.398438 L 118.335938 77.421875 C 118.335938 77.421875 119.597656 77.300781 122.847656 77.300781 C 126.097656 77.300781 127.300781 77.421875 127.300781 77.421875 L 126.761719 76.398438 C 125.796875 74.652344 125.257812 74.171875 125.257812 61.054688 L 125.257812 50.882812 C 125.257812 50.882812 126.28125 46.609375 133.261719 46.609375 C 136.929688 46.609375 138.496094 48.054688 139.398438 49.5 C 140.601562 51.425781 140.78125 54.792969 140.78125 61.234375 C 140.78125 74.351562 140.179688 74.652344 139.21875 76.398438 L 138.675781 77.421875 C 138.675781 77.421875 139.878906 77.300781 143.128906 77.300781 C 146.378906 77.300781 147.640625 77.421875 147.640625 77.421875 L 147.101562 76.398438 C 146.136719 74.652344 145.65625 74.171875 145.65625 61.054688 "/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 167.105469 76.941406 L 161.449219 76.941406 L 161.449219 35.65625 L 167.164062 35.65625 C 176.3125 35.65625 183.714844 44.984375 183.714844 56.359375 C 183.714844 67.734375 176.25 76.941406 167.105469 76.941406 M 167.164062 35.234375 L 154.585938 35.234375 L 157.835938 38.785156 L 157.835938 73.8125 L 154.585938 77.363281 L 167.105469 77.363281 C 178.71875 77.363281 188.167969 67.972656 188.167969 56.359375 C 188.167969 44.742188 178.78125 35.296875 167.164062 35.234375 "/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 208.332031 75.796875 C 201.109375 75.796875 195.089844 68.695312 195.089844 60.753906 C 195.089844 58.34375 195.632812 56.058594 196.777344 54.070312 L 204.121094 54.070312 C 213.808594 54.070312 219.527344 59.25 219.527344 65.628906 C 219.527344 70.921875 215.371094 75.796875 208.332031 75.796875 M 207.007812 48.113281 C 210.558594 48.113281 213.929688 49.859375 215.191406 53.652344 L 197.136719 53.652344 C 199.546875 50.222656 202.734375 48.113281 207.007812 48.113281 M 206.527344 54.070312 L 220.125 54.070312 C 217.117188 49.558594 212.421875 46.972656 206.707031 46.972656 C 198.582031 46.972656 191.480469 53.472656 191.480469 62.738281 C 191.480469 72.1875 199.847656 77.664062 207.667969 77.664062 C 216.035156 77.664062 220.1875 70.921875 220.1875 65.808594 C 220.1875 58.945312 214.347656 54.734375 206.527344 54.070312 "/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 232.46875 59.546875 C 229.460938 58.285156 224.101562 55.578125 224.101562 52.148438 C 224.101562 49.378906 227.351562 47.632812 230.78125 47.632812 C 232.167969 47.632812 233.429688 47.875 234.875 48.535156 L 241.074219 54.074219 L 239.507812 47.273438 L 230.78125 47.273438 C 226.75 47.273438 223.199219 49.378906 223.199219 53.890625 C 223.199219 58.945312 228.976562 62.195312 232.289062 63.640625 C 236.136719 65.445312 241.734375 67.972656 241.734375 71.585938 C 241.734375 74.835938 238.066406 77 233.914062 77 C 232.347656 77 230.242188 76.578125 228.738281 75.976562 L 222.296875 70.320312 L 223.863281 77.363281 L 233.914062 77.363281 C 238.726562 77.363281 242.699219 74.535156 242.699219 70.199219 C 242.699219 63.519531 236.800781 61.414062 232.46875 59.546875 "/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 248.960938 43.058594 C 250.464844 43.058594 251.667969 41.855469 251.667969 40.351562 C 251.667969 38.847656 250.464844 37.644531 248.960938 37.644531 C 247.453125 37.644531 246.25 38.847656 246.25 40.351562 C 246.25 41.855469 247.453125 43.058594 248.960938 43.058594 "/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 251.246094 47.273438 L 244.386719 49.4375 L 247.636719 51.605469 L 247.636719 73.992188 L 244.386719 77.363281 L 254.496094 77.363281 L 251.246094 73.992188 Z M 251.246094 47.273438 "/>
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 286.390625 82.65625 C 286.152344 85.125 284.464844 87.109375 281.398438 87.351562 C 277.90625 87.652344 274.898438 85.96875 272.851562 83.5 C 274.175781 80.792969 276.761719 76.277344 280.796875 76.277344 C 284.40625 76.277344 286.695312 79.347656 286.390625 82.65625 M 259.191406 57.203125 C 259.191406 52.027344 262.441406 48.113281 267.195312 48.175781 C 274.296875 48.292969 280.738281 56.660156 280.738281 63.941406 C 280.738281 69.296875 277.488281 73.027344 272.792969 73.027344 C 266.230469 73.027344 259.191406 65.867188 259.191406 57.203125 M 307.160156 77.363281 L 317.269531 77.363281 L 314.019531 73.992188 L 314.019531 57.503906 C 314.019531 50.582031 309.144531 47.089844 304.089844 47.089844 C 300.179688 47.089844 297.589844 48.777344 294.460938 51.726562 L 294.460938 47.332031 L 287.601562 49.5 L 290.847656 51.664062 L 290.847656 73.992188 L 288.074219 76.871094 C 286.859375 75.707031 285.101562 75.015625 283.023438 75.015625 C 275.140625 75.015625 270.804688 85.90625 261.960938 85.90625 C 259.429688 85.90625 257.445312 84.882812 257.445312 82.65625 C 257.445312 79.828125 259.914062 77.785156 264.003906 76.640625 L 273.332031 73.992188 C 279.230469 72.308594 283.625 67.011719 283.625 60.511719 C 283.625 56.601562 282.058594 53.230469 279.171875 50.523438 L 279.171875 49.917969 L 285.371094 49.917969 L 285.371094 45.285156 L 277.789062 49.5 C 275.558594 47.8125 272.730469 46.96875 269.902344 46.96875 C 262.261719 46.96875 256.300781 52.988281 256.300781 60.570312 C 256.300781 67.855469 262.082031 74.234375 269.902344 74.234375 C 270.382812 74.234375 270.804688 74.234375 271.289062 74.171875 L 264.125 76.039062 C 258.410156 77.542969 256.300781 80.25 256.300781 83.441406 C 256.300781 86.992188 259.613281 90 263.824219 90 C 267.976562 90 270.683594 87.652344 272.613281 83.980469 C 275.019531 86.871094 278.449219 88.195312 281.820312 88.195312 C 286.152344 88.195312 289.882812 85.125 289.882812 81.214844 C 289.882812 79.714844 289.390625 78.398438 288.53125 77.363281 L 297.710938 77.363281 L 294.460938 73.992188 L 294.460938 52.386719 C 296.929688 49.800781 299.394531 47.933594 302.34375 47.933594 C 306.558594 47.933594 310.410156 51.664062 310.410156 57.261719 L 310.410156 73.992188 Z M 307.160156 77.363281 "/>
+</svg></div>
     <div class="divider-v"></div>
     <span class="page-title">營運儀表板</span>
   </div>
-  <span id="today-date"></span>
+  <span id="today-date" style="color:#fff;"></span>
 </div>
 <div class="main">
   <div>
@@ -107,57 +118,147 @@ body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; backgrou
   </div>
   <div>
     <div class="section-label">累積待辦 Backlog</div>
-    <div class="grid-3">
-      <div class="metric"><div class="metric-label">待分配任務</div><div class="metric-value">12</div><div class="metric-sub warn">本週新增 4 件</div></div>
-      <div class="metric"><div class="metric-label">逾期未處理</div><div class="metric-value" style="color:#A32D2D;">3</div><div class="metric-sub down">需本週清除</div></div>
-      <div class="metric"><div class="metric-label">下週重要 Deadline</div><div class="metric-value accent">2</div><div class="metric-sub">兩廳院 / 包裝設計</div></div>
+    <div class="panel">
+      <div class="panel-head">
+        <span class="panel-head-title">待辦任務</span>
+        <span class="panel-head-meta">共 6 件</span>
+      </div>
+      <div class="panel-body" style="padding:0;">
+        <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
+          <colgroup>
+            <col style="width:120px;">
+            <col style="width:auto;">
+            <col style="width:140px;">
+            <col style="width:120px;">
+          </colgroup>
+          <thead>
+            <tr style="border-bottom:0.5px solid #c8cbc9;">
+              <th style="padding:10px 20px; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#949b96; text-align:left;">優先順序</th>
+              <th style="padding:10px 16px; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#949b96; text-align:left;">任務</th>
+              <th style="padding:10px 16px; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#949b96; text-align:left;">客戶名稱</th>
+              <th style="padding:10px 20px; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#949b96; text-align:left;">負責人</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px;"><span class="tag" style="border-color:#A32D2D; color:#A32D2D; background:#FCEBEB;">緊急重要</span></td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">2026 量子軟體創新技術與應用論壇主視覺設計</td>
+              <td style="padding:10px 16px; font-size:12px; color:#444;">工程中心</td>
+              <td style="padding:10px 20px; font-size:12px; color:#444;">柏豪、碧容</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px;"><span class="tag" style="border-color:#BA7517; color:#854F0B; background:#FAEEDA;">重要不緊急</span></td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">【設研院】能量登入</td>
+              <td style="padding:10px 16px; font-size:12px; color:#444;">冶染社</td>
+              <td style="padding:10px 20px; font-size:12px; color:#444;">碧容</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px;"><span class="tag" style="border-color:#BA7517; color:#854F0B; background:#FAEEDA;">重要不緊急</span></td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">公司年度更新計畫</td>
+              <td style="padding:10px 16px; font-size:12px; color:#444;">冶染社</td>
+              <td style="padding:10px 20px; font-size:12px; color:#444;">柏豪、碧容</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px;"><span class="tag" style="border-color:#BA7517; color:#854F0B; background:#FAEEDA;">重要不緊急</span></td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">網站設計優化（新增 icon、活動設計頁面等）</td>
+              <td style="padding:10px 16px; font-size:12px; color:#444;">冶染社</td>
+              <td style="padding:10px 20px; font-size:12px; color:#444;">柏豪、碧容</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px;"><span class="tag" style="border-color:#BA7517; color:#854F0B; background:#FAEEDA;">重要不緊急</span></td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">規劃委任印製抽成級距（搬團另外）</td>
+              <td style="padding:10px 16px; font-size:12px; color:#444;">冶染社</td>
+              <td style="padding:10px 20px; font-size:12px; color:#444;">柏豪、碧容</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 20px;"><span class="tag" style="border-color:#BA7517; color:#854F0B; background:#FAEEDA;">重要不緊急</span></td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">相關客戶追蹤（凱撒、IBM、泰科動力）</td>
+              <td style="padding:10px 16px; font-size:12px; color:#444;">冶染社</td>
+              <td style="padding:10px 20px; font-size:12px; color:#444;">碧容</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div>
     <div class="section-label">專案狀態 Project Status</div>
     <div class="panel">
-      <div class="panel-head"><span class="panel-head-title">進行中專案</span><span class="panel-head-meta">共 6 件</span></div>
-      <div class="panel-body">
-        <div class="project-row" style="border-bottom:0.5px solid #c8cbc9; padding-bottom:6px; margin-bottom:4px;">
-          <div style="font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#949b96;">專案名稱</div>
-          <div style="font-size:10px;color:#949b96;text-transform:uppercase;letter-spacing:0.08em;">狀態</div>
-          <div style="font-size:10px;color:#949b96;text-transform:uppercase;letter-spacing:0.08em;text-align:right;">款項</div>
-          <div style="font-size:10px;color:#949b96;text-transform:uppercase;letter-spacing:0.08em;text-align:right;">截止</div>
-        </div>
-        <div class="project-row"><div><div class="project-name">外交部年報設計</div><div class="project-client">外交部</div></div><div><span class="tag tag-review">審稿中</span></div><div class="col-right">頭款 ✓</div><div class="col-right muted">05 / 20</div></div>
-        <div class="project-row"><div><div class="project-name">品牌識別系統</div><div class="project-client">台灣鐵路</div></div><div><span class="tag tag-exec">執行中</span></div><div class="col-right">頭款 ✓</div><div class="col-right muted">06 / 10</div></div>
-        <div class="project-row"><div><div class="project-name">展覽主視覺</div><div class="project-client">國家兩廳院</div></div><div><span class="tag tag-final">收尾</span></div><div class="col-right warn">尾款待收</div><div class="col-right warn">05 / 08 !</div></div>
-        <div class="project-row"><div><div class="project-name">網站設計</div><div class="project-client">工研院</div></div><div><span class="tag tag-propose">提案中</span></div><div class="col-right muted">頭款待簽</div><div class="col-right muted">05 / 30</div></div>
-        <div class="project-row"><div><div class="project-name">包裝設計</div><div class="project-client">某食品品牌</div></div><div><span class="tag tag-exec">執行中</span></div><div class="col-right">頭款 ✓</div><div class="col-right warn">05 / 05 !</div></div>
-        <div class="project-row"><div><div class="project-name">手冊設計</div><div class="project-client">教育部青年署</div></div><div><span class="tag tag-warn">逾期</span></div><div class="col-right">頭款 ✓</div><div class="col-right warn">04 / 28 !</div></div>
+      <div class="panel-head">
+        <span class="panel-head-title">執行中專案</span>
+        <span class="panel-head-meta">共 7 件</span>
       </div>
-    </div>
-  </div>
-  <div>
-    <div class="section-label">財務健康 Financial Health</div>
-    <div class="grid-4" style="margin-bottom:20px;">
-      <div class="metric"><div class="metric-label">本月收入</div><div class="metric-value">$280,000</div><div class="metric-sub up">▲ 預算達成 93%</div></div>
-      <div class="metric"><div class="metric-label">本月支出</div><div class="metric-value">$94,500</div><div class="metric-sub">預算 $110,000</div></div>
-      <div class="metric"><div class="metric-label">公司現金水位</div><div class="metric-value accent">$1,240,000</div><div class="metric-sub">含公司保留款</div></div>
-      <div class="metric"><div class="metric-label">應收帳款（未收）</div><div class="metric-value">$185,500</div><div class="metric-sub warn">▲ 3 筆逾期提醒</div></div>
-    </div>
-    <div class="row-2col">
-      <div class="panel">
-        <div class="panel-head"><span class="panel-head-title">下月現金流預測</span><span class="panel-head-meta">6 月</span></div>
-        <div class="panel-body">
-          <div class="cashflow-row"><div><div class="cf-label">文化部 — 尾款</div><div class="cf-date">預計 06 / 10</div></div><div class="cf-amt pos">+ $120,000</div></div>
-          <div class="cashflow-row"><div><div class="cf-label">兩廳院 — 頭款</div><div class="cf-date">預計 06 / 15</div></div><div class="cf-amt pos">+ $80,000</div></div>
-          <div class="cashflow-row"><div><div class="cf-label">辦公室租金</div><div class="cf-date">06 / 05</div></div><div class="cf-amt neg">− $28,000</div></div>
-          <div class="cashflow-row"><div><div class="cf-label">薪資（含勞健保）</div><div class="cf-date">06 / 30</div></div><div class="cf-amt neg">− $66,000</div></div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="panel-head"><span class="panel-head-title">業務漏斗 Pipeline</span><span class="panel-head-meta">詢問中 / 報價中</span></div>
-        <div class="panel-body">
-          <div class="pipeline-row"><div><div class="pipeline-name">國立中央大學</div><div class="pipeline-meta">品牌識別系統</div></div><div><div class="pipeline-amt">$180,000</div><div class="pipeline-stage">報價已送出</div></div></div>
-          <div class="pipeline-row"><div><div class="pipeline-name">某食品品牌</div><div class="pipeline-meta">包裝設計</div></div><div><div class="pipeline-amt">$95,000</div><div class="pipeline-stage">初步詢問</div></div></div>
-          <div class="pipeline-row"><div><div class="pipeline-name">政府機關 A</div><div class="pipeline-meta">活動主視覺</div></div><div><div class="pipeline-amt">$60,000</div><div class="pipeline-stage">需求確認中</div></div></div>
-        </div>
+      <div style="padding:0;">
+        <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
+          <colgroup>
+            <col style="width:110px;">
+            <col style="width:auto;">
+            <col style="width:190px;">
+            <col style="width:110px;">
+            <col style="width:90px;">
+            </colgroup>
+          <thead>
+            <tr style="border-bottom:0.5px solid #c8cbc9;">
+              <th style="padding:10px 20px; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#949b96; text-align:left;">客戶名稱</th>
+              <th style="padding:10px 16px; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#949b96; text-align:left;">專案內容</th>
+              <th style="padding:10px 16px; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#949b96; text-align:left;">專案類型</th>
+              <th style="padding:10px 16px; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#949b96; text-align:left;">步驟</th>
+              <th style="padding:10px 16px; font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#949b96; text-align:left;">狀態</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px; font-size:12px; font-weight:500; color:#000;">TQPO</td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">Quantum Taiwan 2026 活動主視覺設計</td>
+              <td style="padding:10px 16px;"><span class="tag" style="border-color:#185FA5;color:#185FA5;background:#E6F1FB;">主視覺設計</span>&nbsp;<span class="tag" style="border-color:#854F0B;color:#854F0B;background:#FAEEDA;">延伸應用物</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#444;"><span style="width:7px;height:7px;border-radius:50%;background:#BA7517;flex-shrink:0;"></span>生產&監製</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#185FA5;"><span style="width:7px;height:7px;border-radius:50%;background:#185FA5;flex-shrink:0;"></span>執行中</span></td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px; font-size:12px; font-weight:500; color:#000;">台灣水產學會</td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">國際研討會主視覺設計</td>
+              <td style="padding:10px 16px;"><span class="tag" style="border-color:#185FA5;color:#185FA5;background:#E6F1FB;">主視覺設計</span>&nbsp;<span class="tag" style="border-color:#854F0B;color:#854F0B;background:#FAEEDA;">延伸應用物</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#444;"><span style="width:7px;height:7px;border-radius:50%;background:#BA7517;flex-shrink:0;"></span>調研&策略</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#185FA5;"><span style="width:7px;height:7px;border-radius:50%;background:#185FA5;flex-shrink:0;"></span>執行中</span></td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px; font-size:12px; font-weight:500; color:#000;">兩廳院</td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">【2026TIFA 藝術家書檔展】視覺延伸與陳列設計</td>
+              <td style="padding:10px 16px;"><span class="tag" style="border-color:#5F5E5A;color:#5F5E5A;background:#f5f4f2;">其他視覺設計</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#444;"><span style="width:7px;height:7px;border-radius:50%;background:#BA7517;flex-shrink:0;"></span>生產&監製</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#949b96;"><span style="width:7px;height:7px;border-radius:50%;background:#949b96;flex-shrink:0;"></span>待回覆</span></td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px; font-size:12px; font-weight:500; color:#000;">CHiP</td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">【ISMD2026】主視覺設計</td>
+              <td style="padding:10px 16px;"><span class="tag" style="border-color:#185FA5;color:#185FA5;background:#E6F1FB;">主視覺設計</span>&nbsp;<span class="tag" style="border-color:#854F0B;color:#854F0B;background:#FAEEDA;">延伸應用物</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#444;"><span style="width:7px;height:7px;border-radius:50%;background:#BA7517;flex-shrink:0;"></span>生產&監製</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#949b96;"><span style="width:7px;height:7px;border-radius:50%;background:#949b96;flex-shrink:0;"></span>待回覆</span></td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px; font-size:12px; font-weight:500; color:#000;">萬海航運</td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">識別規範手冊英文版</td>
+              <td style="padding:10px 16px;"><span class="tag" style="border-color:#3B6D11;color:#3B6D11;background:#EAF3DE;">手冊/刊物</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#444;"><span style="width:7px;height:7px;border-radius:50%;background:#BA7517;flex-shrink:0;"></span>生產&監製</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#949b96;"><span style="width:7px;height:7px;border-radius:50%;background:#949b96;flex-shrink:0;"></span>待回覆</span></td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #e8e7e4;">
+              <td style="padding:10px 20px; font-size:12px; font-weight:500; color:#000;">中大化學</td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">系所識別設計</td>
+              <td style="padding:10px 16px;"><span class="tag" style="border-color:#533AB7;color:#533AB7;background:#EEEDFE;">品牌</span>&nbsp;<span class="tag" style="border-color:#854F0B;color:#854F0B;background:#FAEEDA;">延伸應用物</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#444;"><span style="width:7px;height:7px;border-radius:50%;background:#BA7517;flex-shrink:0;"></span>生產&監製</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#949b96;"><span style="width:7px;height:7px;border-radius:50%;background:#949b96;flex-shrink:0;"></span>待回覆</span></td>
+            </tr>
+            <tr>
+              <td style="padding:10px 20px; font-size:12px; font-weight:500; color:#000;">質敘共構</td>
+              <td style="padding:10px 16px; font-size:12px; color:#000;">網站設計與架設</td>
+              <td style="padding:10px 16px;"><span class="tag" style="border-color:#0F6E56;color:#0F6E56;background:#E1F5EE;">網站設計</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#444;"><span style="width:7px;height:7px;border-radius:50%;background:#BA7517;flex-shrink:0;"></span>生產&監製</span></td>
+              <td style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#949b96;"><span style="width:7px;height:7px;border-radius:50%;background:#949b96;flex-shrink:0;"></span>待回覆</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -169,8 +270,8 @@ body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; backgrou
         <div class="panel-body">
           <div class="ad-row"><span class="ad-label">本週花費</span><span class="ad-val">$4,200</span></div>
           <div class="ad-row"><span class="ad-label">點擊數</span><span class="ad-val">318</span></div>
-          <div class="ad-row"><span class="ad-label">詢問來源（廣告）</span><span class="ad-val">3 件</span></div>
-          <div class="ad-row"><span class="ad-label">帶來潛在案件金額</span><span class="ad-val">$335,000</span></div>
+          <div class="ad-row"><span class="ad-label">花費 / 點擊</span><span class="ad-val">$13.2</span></div>
+          <div class="ad-row"><span class="ad-label">實際洽詢</span><span class="ad-val">3 件</span></div>
         </div>
       </div>
       <div class="panel">
